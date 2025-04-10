@@ -46,7 +46,7 @@ This project investigates how genetic risk factors influence neurophysiological 
 - Preprocessing: MNE, fMRIPrep, artifact rejection, source localization
 - Feature Engineering:
   - EEG: Mean, Standard Deviation, Maximum value, Minimum value, Variance, Skewnewss, Kurtosis, Shannon entropy, Pwelwich, Band Power 
-  - For more info read (https://www.researchgate.net/publication/388255558_Exploring_the_Effectiveness_of_Machine_Learning_and_Deep_Learning_Techniques_for_EEG_Signal_Classification_in_Neurological_Disorders)
+  - For more info [read](https://www.researchgate.net/publication/388255558_Exploring_the_Effectiveness_of_Machine_Learning_and_Deep_Learning_Techniques_for_EEG_Signal_Classification_in_Neurological_Disorders)
   - fMRI connectivity, ICA components
 - Modeling:
   - ML: Logistic Regression, SVMs, Random Forests
