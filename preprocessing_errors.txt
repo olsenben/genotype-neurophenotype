@@ -1,0 +1,64 @@
+-----sub-22-----
+Traceback (most recent call last):
+  File "c:\Users\benol\Documents\GitHub\genotype-neurophenotype\scripts\preprocess_eeg_data.py", line 113, in <module>
+    raw_downsampled_closed = raw_downsampled.copy().crop(tmin=closed_start, tmax=closed_end)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<decorator-gen-314>", line 12, in crop
+  File "C:\Users\benol\miniconda3\envs\mne\Lib\site-packages\mne\io\base.py", line 1598, in crop
+    raise ValueError(f"tmin ({tmin}) must be less than tmax ({tmax})")
+ValueError: tmin (615.83) must be less than tmax (613.537)
+
+
+-----sub-34-----
+Traceback (most recent call last):
+  File "c:\Users\benol\Documents\GitHub\genotype-neurophenotype\scripts\preprocess_eeg_data.py", line 113, in <module>
+    raw_downsampled_closed = raw_downsampled.copy().crop(tmin=closed_start, tmax=closed_end)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<decorator-gen-314>", line 12, in crop
+  File "C:\Users\benol\miniconda3\envs\mne\Lib\site-packages\mne\io\base.py", line 1598, in crop
+    raise ValueError(f"tmin ({tmin}) must be less than tmax ({tmax})")
+ValueError: tmin (702.138) must be less than tmax (365.172)
+
+
+-----sub-55-----
+Traceback (most recent call last):
+  File "c:\Users\benol\Documents\GitHub\genotype-neurophenotype\scripts\preprocess_eeg_data.py", line 78, in <module>
+    raw = mne.io.read_raw_brainvision(vhdr_file, preload=True)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\benol\miniconda3\envs\mne\Lib\site-packages\mne\io\brainvision\brainvision.py", line 999, in read_raw_brainvision
+    return RawBrainVision(
+           ^^^^^^^^^^^^^^^
+  File "<decorator-gen-411>", line 12, in __init__
+  File "C:\Users\benol\miniconda3\envs\mne\Lib\site-packages\mne\io\brainvision\brainvision.py", line 107, in __init__
+    ) = _get_hdr_info(hdr_fname, eog, misc, scale)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\benol\miniconda3\envs\mne\Lib\site-packages\mne\io\brainvision\brainvision.py", line 538, in _get_hdr_info
+    settings, cfg, cinfostr, info = _aux_hdr_info(hdr_fname)
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\benol\miniconda3\envs\mne\Lib\site-packages\mne\io\brainvision\brainvision.py", line 435, in _aux_hdr_info
+    with open(hdr_fname, "rb") as f:
+         ^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'E:\\neuro_data\\ds004796\\sub-55\\eeg\\sub-55_task-rest_eeg.vhdr'
+
+
+-----sub-69-----
+Traceback (most recent call last):
+  File "c:\Users\benol\Documents\GitHub\genotype-neurophenotype\scripts\preprocess_eeg_data.py", line 78, in <module>
+    raw = mne.io.read_raw_brainvision(vhdr_file, preload=True)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\benol\miniconda3\envs\mne\Lib\site-packages\mne\io\brainvision\brainvision.py", line 999, in read_raw_brainvision
+    return RawBrainVision(
+           ^^^^^^^^^^^^^^^
+  File "<decorator-gen-411>", line 12, in __init__
+  File "C:\Users\benol\miniconda3\envs\mne\Lib\site-packages\mne\io\brainvision\brainvision.py", line 107, in __init__
+    ) = _get_hdr_info(hdr_fname, eog, misc, scale)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\benol\miniconda3\envs\mne\Lib\site-packages\mne\io\brainvision\brainvision.py", line 538, in _get_hdr_info
+    settings, cfg, cinfostr, info = _aux_hdr_info(hdr_fname)
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\benol\miniconda3\envs\mne\Lib\site-packages\mne\io\brainvision\brainvision.py", line 435, in _aux_hdr_info
+    with open(hdr_fname, "rb") as f:
+         ^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'E:\\neuro_data\\ds004796\\sub-69\\eeg\\sub-69_task-rest_eeg.vhdr'
+
+

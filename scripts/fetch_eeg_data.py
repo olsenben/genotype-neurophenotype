@@ -14,6 +14,8 @@ cd file_path/ds004796
 Use to pull EEG files (eeg + vhdr + vmrk + tsv)
 
 Do not rename or move files from this directory!
+
+Note: for me, the get always fails at subject 19. no idea why. it will skip but you can manually download it and replace the eeg file
 """
 
 base_path = "E:/neuro_data/ds004796"

@@ -7,67 +7,31 @@ import os
 import traceback
 
 """
-script for preprocessing resting eeg data. 
-if you only want to process eyes open vs eyes closed,
-make sure you comment out the appropriate lines after 
-the event splitting step (Step 8)
-Warning: each ICA fitting can 5-8 minutes. Preprocessing this data will take awhile, go get a coffee or something.
+There were some encoding errors, mainly subject 22 and 34 were missing some events. 
+subject 22 was missing eyes open resting events, subject 34 the events were encoded wrong.
+subject 55 is also missing rest data 
+subject 69 is missing from the dataset.
+Since its just those two I am fixing them manually.
 """
+error_log = {}
 
 #folder where data is stored
 base_path = "E:/neuro_data/ds004796"
 
-error_log = {}
+subjects = {
+    'sub-22' : {
+        'S 10' : 240.773,
+        'S  1' : 253.537,
+        'S 11' : 614.83
+    },
+    'sub-34' : {
+        'S  1' : 246.55,
+        'S 11' : 702.138
+    }
+}
 
-def get_segments(annotations):
-    #decscriptions are "event_type"
-    descs = [desc.strip() for desc in annotations.description]
-    onsets = annotations.onset
-
-    events_dict = {}
-
-    for desc, onset in zip(descs, onsets):
-        if desc not in events_dict:
-            events_dict[desc] = []
-        events_dict[desc].append(onset)
-
-    #eyes open, prefer S 2 - S 10
-    if "S  2" in events_dict:
-        open_start = events_dict["S  2"][0]
-    elif "S  1" in events_dict:
-        open_start = sorted(events_dict["S  1"])[0]
-    else:
-        raise ValueError("No valid start for eyes-open (S 2 or S 1)")
-    
-    #find open_end
-    if "S  10" in events_dict:
-        open_end = events_dict["S  10"][0]
-    else:
-        #go to next event as fallback
-        next_events = [t for t in onsets if t > open_start]
-        open_end = next_events[0] if next_events else open_start + 240 #assuming 4 minutes based on observations
-
-    #eyes closed, prefer S 4 - S 11
-    if "S  4" in events_dict:
-            closed_start = events_dict["S  4"][0]
-    elif "S  1" in events_dict:
-        closed_candidates = [t for t in events_dict["S  1"] if t > open_end]
-        closed_start = closed_candidates[0] if closed_candidates else open_end + 1
-    else:
-        raise ValueError("No valid start for eyes-closed (S 4 or S 1)")
-    
-    #find closed_end
-    if "S  11" in events_dict:
-        closed_end = events_dict["S  11"][0]
-    else:
-        #go to next event as fallback
-        next_events = [t for t in onsets if t > closed_start]
-        closed_end = next_events[0] if next_events else open_start + 360 #assuming 6 minutes based on observations
-
-    return (open_start, open_end), (closed_start, closed_end)
-
-for i in range(1, 81):
-    subject = f"sub-{i:02d}"
+for subject, data in subjects.items():
+    subject = subject
     try:
         #STEP 1: Load Data
         print(f"Processing folder: {subject}")
@@ -107,7 +71,9 @@ for i in range(1, 81):
         )
 
         raw_downsampled.set_annotations(annotations)
-        (open_start, open_end), (closed_start, closed_end) = get_segments(raw_downsampled.annotations)
+
+        #(open_start, open_end), 
+        (closed_start, closed_end) = subjects[subject]['S  1'], subjects[subject]['S 11']
 
         #raw_downsampled_open = raw_downsampled.copy().crop(tmin=open_start, tmax=open_end)
         raw_downsampled_closed = raw_downsampled.copy().crop(tmin=closed_start, tmax=closed_end)
@@ -165,10 +131,4 @@ if error_log:
 
 else:
     print("All files process successfully")
-
-    
-
-
-
-
 
