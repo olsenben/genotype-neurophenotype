@@ -157,7 +157,7 @@ for i in range(1, 81):
 
 #save error txt
 if error_log:
-    with open("preprocessing_errors.txt", "w") as f:
+    with open(r"outputs\preprocessing_errors.txt", "w") as f:
         for subject, error_trace in error_log.items():
             f.write(f"-----{subject}-----\n")
             f.write(error_trace + "\n\n")

@@ -1,0 +1,15 @@
+-----sub-55-----
+Traceback (most recent call last):
+  File "c:\Users\benol\Documents\GitHub\genotype-neurophenotype\scripts\preprocess_resting_fmri.py", line 46, in <module>
+    torch.save(tensor_feat, os.path.join(output_dir, subject_id,f"{subject_id}_fmri.pt"))
+  File "C:\Users\benol\miniconda3\envs\mne\Lib\site-packages\torch\serialization.py", line 964, in save
+    with _open_zipfile_writer(f) as opened_zipfile:
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\benol\miniconda3\envs\mne\Lib\site-packages\torch\serialization.py", line 828, in _open_zipfile_writer
+    return container(name_or_buffer)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\benol\miniconda3\envs\mne\Lib\site-packages\torch\serialization.py", line 792, in __init__
+    torch._C.PyTorchFileWriter(
+RuntimeError: Parent directory E:\neuro_data\processed\derivatives\sub-55 does not exist.
+
+
